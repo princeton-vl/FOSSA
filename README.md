@@ -80,7 +80,7 @@ import torch
 try:
     import power_exp_psf_cuda
     import os
-    path = power_exp_psf.__file__
+    path = power_exp_psf_cuda.__file__
     if os.path.exists(path):
         print(f"SUCCESS: power_exp_psf_cuda loaded from {path}")
     else:
