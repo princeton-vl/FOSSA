@@ -72,7 +72,7 @@ This is **required** for training and evaluation with synthetic defocus effects.
 cd power_exp_psf
 
 # Build and install the extension
-python setup.py build_ext --inplace
+python setup.py install
 
 # Verify successful installation
 python - <<'PY'
@@ -91,8 +91,6 @@ PY
 
 cd ..
 
-# Add power_exp_psf as a search directory for imports
-export PYTHONPATH=$PWD/power_exp_psf:$PYTHONPATH
 ```
 </details>
 
@@ -536,22 +534,8 @@ nvcc --version
 
 Then retry:
 ```bash
-python setup.py build_ext --inplace
+python setup.py install
 ```
-
-#### ❌ Error: ModuleNotFoundError: No module named 'power_exp_psf_cuda'
-
-If you see an error like: "ModuleNotFoundError: No module named 'power_exp_psf_cuda'", this means your environment does not know where to search for the power_exp_psf_cuda module. 
-
-#### ✅ Fix: Add the module to PYTHONPATH
-
-From your project root, run:
-
-```bash 
-export PYTHONPATH=$PWD/power_exp_psf:$PYTHONPATH
-```
-Then retry your script.
-
 </details>
 
 ## Citation
