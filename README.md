@@ -41,7 +41,7 @@ Released under CC BY 4.0 License at
 - Huggingface download link: [https://huggingface.co/datasets/venkatsubra/ZEDD](https://huggingface.co/datasets/venkatsubra/ZEDD).
 
 ## Roadmap
-- ⏳ Release FOSSA training code (Coming April 2026)
+- ✅ Release FOSSA training code
 - ✅ Release FOSSA evaluation code
 - ✅ Release ZEDD dataset and test server
 
@@ -477,6 +477,7 @@ bash dist_val.sh --encoder vitb --resumed_from fossa-vitb-ddff-finetuned \
 | -----: | -----: | -----: | -----: | -----: | -----: | -----: |
 | 0.0003 | 0.0148 | 0.1088 | 0.0025 | 0.9322 | 0.9866 | 0.9939 |
 
+</details>
 
 </details>
 
@@ -501,6 +502,9 @@ bash dist_test.sh --encoder=vits --resumed_from fossa-vits --val_loader_config_c
 ```
 
 Finally, submit your zip file to [the ZEDD test server](https://zedd.cs.princeton.edu/submissions/new/).
+
+## Training from Scratch & Finetuning on DDFF
+See [Training.md](./Training.md) for details.
 
 ## Troubleshooting
 

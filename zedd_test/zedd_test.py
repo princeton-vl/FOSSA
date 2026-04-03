@@ -87,7 +87,7 @@ def save_zedd_outputs(model, config, test_set):
         dataset_sampled_from = 'Zedd'
         training = False
 
-        focal_stack, fd_list = get_focal_stack_and_fd_list(
+        focal_stack, fd_list, _ = get_focal_stack_and_fd_list(
             rgb=rgb, depth=depth, depth_valid_mask=valid_mask, K=K, config=config, dataset_sampled_from=dataset_sampled_from, training=training,
             dataset_focal_stack=focal_stack_input, dataset_fd_list=fd_list_input)
 

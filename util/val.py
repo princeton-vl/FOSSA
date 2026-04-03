@@ -5,9 +5,7 @@ from util.vis import log_images
 import torch
 import random
 from util.log import wandb_log_scalars
-
 from tqdm import tqdm
-
 import torch.nn.functional as F
 
 
@@ -53,7 +51,7 @@ def measure_model_efficiency(model, config, val_loader):
     torch.cuda.reset_peak_memory_stats()
     torch.cuda.synchronize()
 
-    focal_stack, fd_list = get_focal_stack_and_fd_list(
+    focal_stack, fd_list, _ = get_focal_stack_and_fd_list(
         rgb=rgb, depth=depth, K=K, depth_valid_mask=valid_mask, config=config, dataset_sampled_from=config['val_loader_config']['dataset_name'], training=False,
         dataset_focal_stack=focal_stack, dataset_fd_list=fd_list_input)
     
@@ -134,7 +132,7 @@ def collect_metrics(val_loader, model, config, metric_tracker):
         focal_stack = sample.get('focal_stack', None)
         fd_list_input = sample.get('fd_list', None)
 
-        focal_stack, fd_list = get_focal_stack_and_fd_list(
+        focal_stack, fd_list, _ = get_focal_stack_and_fd_list(
             rgb=rgb, depth=depth, K=K, depth_valid_mask=valid_mask, config=config, dataset_sampled_from=config['val_loader_config']['dataset_name'], training=False,
             dataset_focal_stack=focal_stack, dataset_fd_list=fd_list_input)
         

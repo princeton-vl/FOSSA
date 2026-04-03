@@ -8,12 +8,16 @@ from .infinigen_defocus import InfinigenDefocus
 from .zedd import Zedd
 from .ddff12_val import DDFF12Loader_Val
 from .hammer import HAMMER
+from .ddff12_train import DDFF12Loader_Train
+from .hypersim import Hypersim
+from .tartanair import TartanAir
+from .multidataset import MultiDataset
 
 from PIL import Image
 
 from importlib import import_module
 
-__all__ = ['DDFF12Loader_Val', 'Uniformat', 'InfinigenDefocus', 'Zedd', 'HAMMER']
+__all__ = ['Uniformat', 'InfinigenDefocus', 'Zedd', 'HAMMER', 'DDFF12Loader_Val', 'DDFF12Loader_Train']
 def init_dataloader(config, split):
     dataset = instantiate_class_from_config(config['dataset'][split])
     if split == 'train':

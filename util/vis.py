@@ -2,8 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 from matplotlib.colors import LogNorm, Normalize
-
-
 import torch
 import random
 import numpy as np
@@ -58,7 +56,6 @@ def get_normalizer_and_colorbar_ticks(depth, valid_mask):
 @torch.no_grad()
 def log_images(model, config, subset, split, step, first_epoch=False):
     model.eval()
-    assert split == 'val', "Currently only logging images for validation samples is supported, but got split={split}"
     for i in range(min(config['log_first_n_samples'], len(subset))):  # Fixed logging of first "log_first_n_samples" images in the subset
         
         sample = subset[i]
@@ -82,7 +79,7 @@ def log_images(model, config, subset, split, step, first_epoch=False):
         dataset_sampled_from = config['instantiated_train_dataset_object'].get_dataset_name(i) if split == 'train' else config['val_loader_config']['dataset_name']
         training = True if split == 'train' else False
 
-        focal_stack, fd_list = get_focal_stack_and_fd_list(
+        focal_stack, fd_list, _ = get_focal_stack_and_fd_list(
             rgb=rgb, depth=depth, depth_valid_mask=valid_mask, K=K, config=config, dataset_sampled_from=dataset_sampled_from, training=training,
             dataset_focal_stack=focal_stack_input, dataset_fd_list=fd_list_input)
 
@@ -147,7 +144,7 @@ def log_images(model, config, subset, split, step, first_epoch=False):
         dataset_sampled_from = config['instantiated_train_dataset_object'].get_dataset_name(j) if split == 'train' else config['val_loader_config']['dataset_name']
         training = True if split == 'train' else False
 
-        focal_stack, fd_list = get_focal_stack_and_fd_list(
+        focal_stack, fd_list, _ = get_focal_stack_and_fd_list(
             rgb=rgb, depth=depth, depth_valid_mask=valid_mask, K=K, config=config, dataset_sampled_from=dataset_sampled_from, training=training,
             dataset_focal_stack=focal_stack_input, dataset_fd_list=fd_list_input)
         
