@@ -1,15 +1,11 @@
 import os
-import tarfile
-from io import BytesIO
 import json
 import numpy as np
-from scipy import io
 from .base import BaseDataset
 from PIL import Image
 import torch
 import torchvision.transforms as T
 import torchvision.transforms.functional as TF
-import pandas as pd
 from pathlib import Path
 
 class InfinigenDefocus(BaseDataset):

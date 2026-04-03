@@ -169,4 +169,3 @@ dataset=dict(
 
 # --- remove non-config globals so pretty_text doesn't break ---
 del argparse, parser, args, _unknown
-

@@ -2,13 +2,11 @@ import io
 import json
 from pathlib import Path
 import argparse
-
 import cv2
 import numpy as np
 import torch
 import torchvision.transforms as T
 from PIL import Image
-
 from .base import BaseDataset
 
 

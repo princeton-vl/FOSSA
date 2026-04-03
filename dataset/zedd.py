@@ -1,15 +1,10 @@
 import numpy as np
 from pathlib import Path
-
 from .base import BaseDataset
-
 from PIL import Image
 import torch
 import torchvision.transforms as T
 import torchvision.transforms.functional as TF
-
-
-
 
 def load_metadata(path: Path) -> dict:
     """Parse metadata.txt into {run_id: {hex_code, focus_distance}}."""

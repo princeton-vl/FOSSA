@@ -1,18 +1,13 @@
 import os
 import warnings
-
 import numpy as np
-
 from .base import BaseDataset
-
 from PIL import Image
 import torch
 import torchvision.transforms as T
 import torchvision.transforms.functional as TF
-
-warnings.filterwarnings("ignore", category=UserWarning)
-
 from pathlib import Path
+warnings.filterwarnings("ignore", category=UserWarning)
 
 class Uniformat(BaseDataset):
     def __init__(self, args, mode="train"):
@@ -83,16 +78,9 @@ class Uniformat(BaseDataset):
 
             print(f"cropped h: {cropped_h}, cropped w: {cropped_w}")
 
-
-
-
-        
-
-
         # use depth_filled as gt for training
         # note that the values in depth_filled are the same as gt for valid pixels
         # others are filled by OMNI-DC, but those are only relevant for focus stack generation.
-
         output = {'rgb': rgb, 'gt': depth_filled, 'K': K, 'valid_mask': depth_valid_mask}
         
         return output # Assume uniformat only corresponds to 1 validation dataset
