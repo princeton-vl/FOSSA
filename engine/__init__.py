@@ -31,14 +31,14 @@ def init_optimizer_scheduler(config, model, **kwargs):
     if 'resumed_from' in config and config['resumed_from'] is not None:
         if os.path.exists(config['resumed_from']):
             print(f"Loading resumed checkpoint from local path: {config['resumed_from']}")
-            checkpoint = torch.load(config['resumed_from'], map_location='cpu')
+            checkpoint = torch.load(config['resumed_from'], map_location='cpu', weights_only=True)
         else:
             try:
                 ckpt_path = hf_hub_download(
                     repo_id=f"venkatsubra/{config['resumed_from']}", # Access files at the public repo
                     filename="model.pth",
                 )
-                checkpoint = torch.load(ckpt_path, map_location='cpu')
+                checkpoint = torch.load(ckpt_path, map_location='cpu', weights_only=True)
             except Exception as e:
                 raise FileNotFoundError(f"Resumed model not found at {config['resumed_from']} locally or on Hugging Face Hub at repo: venkatsubra/{config['resumed_from']}. Error: {str(e)}")
         optimizer.load_state_dict(checkpoint['optimizer'])
